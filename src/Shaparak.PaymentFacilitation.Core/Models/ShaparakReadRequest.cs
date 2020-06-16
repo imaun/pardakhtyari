@@ -32,11 +32,13 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// <summary>
         /// برای تعیین شروع بازه درخواست  این فیلد را مقداردهی کنید.
         /// </summary>
+        [JsonIgnore]
         public DateTime RequestStartDateValue { get; set; }
 
         /// <summary>
         /// برای تعیین تاریخ پایان بازه درخواست این فیلد را مقداردهی کنید.
         /// </summary>
+        [JsonIgnore]
         public DateTime RequestFinishDateValue { get; set; }
 
         /// <summary>

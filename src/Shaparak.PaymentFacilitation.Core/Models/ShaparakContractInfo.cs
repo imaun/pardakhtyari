@@ -25,6 +25,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="ContractDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime ContractDateValue { get; set; }
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="ExpiryDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? ExpiryDateValue { get; set; }
 
         /// <summary>
@@ -51,6 +53,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="ServiceStartDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime ServiceStartDateValue { get; set; }
 
         /// <summary>

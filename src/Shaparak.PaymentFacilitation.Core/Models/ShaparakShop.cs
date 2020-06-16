@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Shaparak.PaymentFacilitation.Core.Enums;
 using Shaparak.PaymentFacilitation.Core.Infrastructure;
@@ -44,7 +43,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="CertificateIssueDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
-        [IgnoreDataMember]
+        [JsonIgnore]
         public DateTime? CertificateIssueDateValue { get; set; }
 
         [Description("تاریخ اعتبار جواز کسب")]
@@ -55,7 +54,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="CertificateExpiryDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
-        [IgnoreDataMember]
+        [JsonIgnore]
         public DateTime? CertificateExpiryDateValue { get; set; }
 
         /// <summary>
@@ -152,6 +151,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="EtrustCertificateExpiryDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? EtrustCertificateIssueDateValue { get; set; }
 
         [Description("تاریخ اتمام اعتبار نماد اعتماد الکترونیکی")]
@@ -162,6 +162,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="EtrustCertificateExpiryDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? EtrustCertificateExpiryDateValue { get; set; }
 
         /// <summary>

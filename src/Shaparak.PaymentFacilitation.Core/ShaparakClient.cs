@@ -15,9 +15,6 @@ namespace Shaparak.PaymentFacilitation.Core  {
         #region Constants
 
         private const string _baseUrl = "https://mms.shaparak.ir/merchant";
-        private const string H_AUTH_KEY = "Authorization";
-        private const string H_CONTENT_TYPE_VALUE = "application/json";
-        private const string H_CONTENT_TYPE_KEY = "Content-Type";
         private const string URL_READ_REQUEST = "webService/readRequestCartableWithFilter";
         private const string URL_WRITE_REQUEST = "webService/writeExternalRequest";
 
@@ -85,8 +82,11 @@ namespace Shaparak.PaymentFacilitation.Core  {
         private Dictionary<string, string> getHeaders() =>
             new Dictionary<string, string>
             {
-                { H_AUTH_KEY, getAuthorizationValue() },
-                { H_CONTENT_TYPE_KEY, H_CONTENT_TYPE_KEY }
+                { "Authorization", getAuthorizationValue() },
+                { "Content-Type", "application/json" },
+                { "Accept", "*/*" }, //Tell the server that this client will accept any format
+                { "Connection", "keep-alive" },
+                { "User-Agent", "imun" }
             };
 
         #endregion

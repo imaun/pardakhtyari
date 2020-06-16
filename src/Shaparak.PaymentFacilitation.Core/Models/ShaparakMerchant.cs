@@ -86,6 +86,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for <see cref="BirthDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? BirthDateValue { get; set; }
 
         /// <summary>
@@ -102,6 +103,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for <see cref="RegisterDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? RegisterDateValue { get; set; }
 
         /// <summary>
@@ -235,6 +237,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for <see cref="PassportExpireDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime? PassportExpireDateValue { get; set; }
 
         /// <summary>

@@ -39,6 +39,7 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
         /// Backing field for : <see cref="SetupDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
+        [JsonIgnore]
         public DateTime SetupDateValue { get; set; }
 
         [Description("برند سخت افزار پایانه"), MaxLength(50)]

@@ -7,10 +7,9 @@ namespace Shaparak.PaymentFacilitation.Core.Models {
 
     public class ShaparakSettlementFile {
 
-        public ShaparakSettlementFile() {
-            SettlementDataDetails = new List<ShaparakSettlementData>();
-        }
-
+        public ShaparakSettlementFile() 
+            => SettlementDataDetails = new List<ShaparakSettlementData>();
+        
         public IList<ShaparakSettlementData> SettlementDataDetails { get; set; }
 
         public void Add(ShaparakSettlementData settlementData) 
