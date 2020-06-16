@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shaparak.PaymentFacilitation.Core.Infrastructure {
+namespace Shaparak.PaymentFacilitation.Infrastructure {
 
     internal static class TimeStampHelper {
 
