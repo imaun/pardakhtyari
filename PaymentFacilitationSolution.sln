@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2F990476-4B3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shaparak.PaymentFacilitation", "src\Shaparak.PaymentFacilitation\Shaparak.PaymentFacilitation.csproj", "{68468831-3B4D-4516-B57F-49D37CA81C28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shaparak.PaymentFacilitation.Client", "src\Shaparak.PaymentFacilitation.Client\Shaparak.PaymentFacilitation.Client.csproj", "{36AACB5B-FD78-420B-B686-FAA9BC05C5F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{68468831-3B4D-4516-B57F-49D37CA81C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68468831-3B4D-4516-B57F-49D37CA81C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68468831-3B4D-4516-B57F-49D37CA81C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36AACB5B-FD78-420B-B686-FAA9BC05C5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36AACB5B-FD78-420B-B686-FAA9BC05C5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36AACB5B-FD78-420B-B686-FAA9BC05C5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36AACB5B-FD78-420B-B686-FAA9BC05C5F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B8112E88-2BA1-4FAF-BD40-C673C9F67DB7} = {2F990476-4B34-494A-BEC0-8FD99321600D}
 		{68468831-3B4D-4516-B57F-49D37CA81C28} = {2F990476-4B34-494A-BEC0-8FD99321600D}
+		{36AACB5B-FD78-420B-B686-FAA9BC05C5F8} = {2F990476-4B34-494A-BEC0-8FD99321600D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D52141B-DC3A-4521-8D9B-08B2EBB15A04}
