@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Shaparak.PaymentFacilitation.Core.Infrastructure {
-    
-    internal interface IHttpRestClient<in T, TResult> : IDisposable where T : class {
-        
-        Task<TResult> PostJsonAsync();
 
-        Task<TResult> PostAsync(string url, T data, Dictionary<string, string> headers = null);
+    public interface IHttpRestClient
+    {
+        Task<TResult> PostAsync<T, TResult>(
+            T data,
+            string url,
+            Dictionary<string, string> headers = null);
 
+        Task<TResult> PostFormAsync<TResult>(
+            IEnumerable<KeyValuePair<string, string>> data,
+            string url,
+            Dictionary<string, string> headers = null);
     }
 }

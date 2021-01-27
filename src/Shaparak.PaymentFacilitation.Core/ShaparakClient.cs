@@ -6,33 +6,10 @@ using Shaparak.PaymentFacilitation.Core.Infrastructure;
 
 namespace Shaparak.PaymentFacilitation.Core  {
 
-    /// <summary>
-    /// کلاینت ارتباط با وب سرویس شاپرک
-    /// دو متد کلی شاپرک را در اختیار می گذارد
-    /// </summary>
-    public class ShaparakClient {
+    ///<inheritdoc/>
+    public class ShaparakClient: IShaparakClient {
 
-        #region Constants
-
-        private const string _baseUrl = "https://mms.shaparak.ir/merchant";
-        private const string URL_READ_REQUEST = "webService/readRequestCartableWithFilter";
-        private const string URL_WRITE_REQUEST = "webService/writeExternalRequest";
-
-        #endregion
-        
-        #region Properties
-
-        /// <summary>
-        /// Shaparak Username
-        /// </summary>
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Shaparak Password
-        /// </summary>
-        public string Password { get; set; }
-
-        #endregion
+        private readonly IHttpRestClient _client;
 
         /// <summary>
         /// Pass <see cref="Username"/> and <see cref="Password"/> in plain text.
@@ -41,33 +18,87 @@ namespace Shaparak.PaymentFacilitation.Core  {
         /// </summary>
         /// <param name="username">Shaparak Username</param>
         /// <param name="password">Shaparak Password</param>
-        public ShaparakClient(string username, string password) {
+        public ShaparakClient(IHttpRestClient client,
+            string baseUrl,
+            string username,
+            string password) {
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            BaseUrl = baseUrl;
             Username = username;
             Password = password;
         }
 
+        #region Constants
+
+        private const string URL_READ_REQUEST = "webService/readRequestCartableWithFilter";
+        private const string URL_WRITE_REQUEST = "webService/writeExternalRequest";
+
+        #endregion
+
+        #region Properties
+
+        /// <inheritdoc/>
+        public string BaseUrl {
+            get => _baseUrl; 
+            set {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException(nameof(BaseUrl));
+                _baseUrl = value;
+            }
+        }
+        private string _baseUrl;
+
+        /// <inheritdoc/>
+        public string Username {
+            get => _username;
+            set {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException(nameof(Username));
+                _username = value;
+            }
+        }
+        private string _username;
+
+        /// <inheritdoc/>
+        public string Password {
+            get => _password;
+            set {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException(nameof(Password));
+                _password = value;
+            }
+        }
+        private string _password;
+
+        #endregion
+
+        /// <inheritdoc/>
         public async Task<ReadRequestCartableResponse> ReadRequestCartable(ShaparakReadRequest model) {
             if (model == null)
-                throw new System.NullReferenceException("The model cannot be null.");
+                throw new NullReferenceException("The model cannot be null.");
 
             string url = $"{_baseUrl}/{URL_READ_REQUEST}";
             ReadRequestCartableResponse result;
-            using (var client = new HttpRestClient<ShaparakReadRequest, ReadRequestCartableResponse>()) {
-                result = await client.PostAsync(url, model, getHeaders());
-            }
+            
+            result = await _client
+                .PostAsync<ShaparakReadRequest, ReadRequestCartableResponse>
+                    (model, url, getHeaders());
+            
             return result;
         }
 
+        /// <inheritdoc/>
         public async Task<ShaparakWriteResponse> WriteExternalRequest(ShaparakWriteRequest model) {
             if (model == null)
-                throw new System.NullReferenceException("The model cannot be null.");
+                throw new NullReferenceException("The model cannot be null.");
 
             string url = $"{_baseUrl}/{URL_WRITE_REQUEST}";
             ShaparakWriteResponse result;
+           
+            result = await _client
+                .PostAsync<ShaparakWriteRequest, ShaparakWriteResponse>
+                    (model, url, getHeaders());
             
-            using (var client = new HttpRestClient<ShaparakWriteRequest, ShaparakWriteResponse>()) {
-                result = await client.PostAsync(url, model, getHeaders());
-            }
             return result;
         }
 

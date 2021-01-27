@@ -7,30 +7,30 @@ using Newtonsoft.Json;
 
 namespace Shaparak.PaymentFacilitation.Core.Infrastructure {
 
-    internal class HttpRestClient<T, TResult> : IHttpRestClient<T, TResult>, IDisposable where T: class {
+    public class HttpRestClient : IHttpRestClient
+    {
 
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly HttpClient _httpClient;
 
-        public HttpRestClient() {
-            _httpClient = new HttpClient();
+        public HttpRestClient(IHttpClientFactory httpClientFactory) {
+            _httpClientFactory = httpClientFactory
+                ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _httpClient = _httpClientFactory.CreateClient();
         }
 
-        public HttpRestClient(HttpClient httpClient) {
-            _httpClient = httpClient;
+        private void addHeaders(Dictionary<string, string> headers = null) {
+            _httpClient.DefaultRequestHeaders.Clear();
+            foreach (var item in headers ?? new Dictionary<string, string>())
+                _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(item.Key, item.Value);
         }
 
-        public void Dispose() {
-            _httpClient.Dispose();
-        }
-
-        public async Task<TResult> PostAsync(
-            string url,
+        public async Task<TResult> PostAsync<T, TResult>(
             T data,
-            Dictionary<string, string> headers = null)
-        {
-            foreach (var (key, value) in headers ?? new Dictionary<string, string>())
-                _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(key, value);
+            string url,
+            Dictionary<string, string> headers = null) {
 
+            addHeaders(headers);
             var result = await _httpClient.PostAsync(
                 url,
                 new StringContent(
@@ -40,16 +40,29 @@ namespace Shaparak.PaymentFacilitation.Core.Infrastructure {
             );
 
             if (!result.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException($"{result.StatusCode} {result.ReasonPhrase}");
-            }
+                throw new HttpRequestException(
+                    $"{result.StatusCode} {result.ReasonPhrase}");
 
-            return JsonConvert.DeserializeObject<TResult>(await result.Content.ReadAsStringAsync());
+            var content = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<TResult>(content);
         }
 
-        public Task<TResult> PostJsonAsync() {
-            throw new NotImplementedException();
+        public async Task<TResult> PostFormAsync<TResult>(
+            IEnumerable<KeyValuePair<string, string>> data,
+            string url,
+            Dictionary<string, string> headers = null) {
+            addHeaders(headers);
+            var result = await _httpClient.PostAsync(
+                url,
+                new FormUrlEncodedContent(data));
+
+            if (!result.IsSuccessStatusCode)
+                throw new HttpRequestException(
+                    $"{result.StatusCode} {result.ReasonPhrase}");
+
+            var content = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<TResult>(content);
         }
-        
+
     }
 }

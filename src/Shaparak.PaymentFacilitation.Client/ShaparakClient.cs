@@ -10,7 +10,14 @@ namespace Shaparak.PaymentFacilitation.Client  {
     /// کلاینت ارتباط با وب سرویس شاپرک
     /// دو متد کلی شاپرک را در اختیار می گذارد
     /// </summary>
-    public class ShaparakClient {
+    public class ShaparakClient
+    {
+
+        private readonly IHttpRestClient _client;
+
+        public ShaparakClient(IHttpRestClient client) {
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+        }
 
         #region Constants
 
@@ -19,7 +26,7 @@ namespace Shaparak.PaymentFacilitation.Client  {
         private const string URL_WRITE_REQUEST = "webService/writeExternalRequest";
 
         #endregion
-        
+
         #region Properties
 
         /// <summary>
@@ -48,26 +55,29 @@ namespace Shaparak.PaymentFacilitation.Client  {
 
         public async Task<ReadRequestCartableResponse> ReadRequestCartable(ShaparakReadRequest model) {
             if (model == null)
-                throw new System.NullReferenceException("The model cannot be null.");
+                throw new NullReferenceException("The model cannot be null.");
 
             string url = $"{_baseUrl}/{URL_READ_REQUEST}";
             ReadRequestCartableResponse result;
-            using (var client = new HttpRestClient<ShaparakReadRequest, ReadRequestCartableResponse>()) {
-                result = await client.PostAsync(url, model, getHeaders());
-            }
+
+            result = await _client
+                .PostAsync<ShaparakReadRequest, ReadRequestCartableResponse>
+                    (model, url, getHeaders());
+
             return result;
         }
 
         public async Task<ShaparakWriteResponse> WriteExternalRequest(ShaparakWriteRequest model) {
             if (model == null)
-                throw new System.NullReferenceException("The model cannot be null.");
+                throw new NullReferenceException("The model cannot be null.");
 
             string url = $"{_baseUrl}/{URL_WRITE_REQUEST}";
             ShaparakWriteResponse result;
-            
-            using (var client = new HttpRestClient<ShaparakWriteRequest, ShaparakWriteResponse>()) {
-                result = await client.PostAsync(url, model, getHeaders());
-            }
+
+            result = await _client
+                .PostAsync<ShaparakWriteRequest, ShaparakWriteResponse>
+                    (model, url, getHeaders());
+
             return result;
         }
 
@@ -75,10 +85,10 @@ namespace Shaparak.PaymentFacilitation.Client  {
 
         private string base64Encode(string what)
             => Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(what));
-        
+
         private string getAuthorizationValue() =>
              $"Basic {base64Encode($"{Username}:{Password}")}";
-        
+
         private Dictionary<string, string> getHeaders() =>
             new Dictionary<string, string>
             {
