@@ -31,7 +31,7 @@ options.Password = "password";
 `services.AddPaymentFacilitation(options => Configuration.GetSection("shaparak").Bind(options));`
 
 # اطلاعات بیشتر
-<p dir="rtl" align="right">
+
 برای کسب اطلاعات بیشتر می تونید این مقاله رو بخونید. در [این مقاله](https://virgool.io/@imun/pardakhtyari-nnnvvxpnyyay) من کامل در مورد روال پرداخت‌یاری و چگونگی انجام تست اند-تو-اند شرکت شاپرک توضیح دادم.
 اگر به زبان های دیگه مسلط هستید، می تونید با مطالعه سورس کد، معادل این کتابخانه را به زبان های دیگه برای پلت فرم های مختلف بنویسید. اگر این کارو انجام دادید به من اطلاع بدین تا لینک پروژه تون رار مقاله ام بذارم.
- </p>
+ 
