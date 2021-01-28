@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using Shaparak.PaymentFacilitation.Infrastructure;
 
 namespace Shaparak.PaymentFacilitation.Models {
 

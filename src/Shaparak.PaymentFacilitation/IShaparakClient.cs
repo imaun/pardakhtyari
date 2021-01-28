@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Shaparak.PaymentFacilitation.Core.Models;
+using Shaparak.PaymentFacilitation.Models;
 
-namespace Shaparak.PaymentFacilitation.Core {
+namespace Shaparak.PaymentFacilitation {
 
     /// <summary>
     /// کلاینت ارتباط با وب سرویس شاپرک

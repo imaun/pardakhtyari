@@ -17,14 +17,13 @@ namespace Shaparak.PaymentFacilitation.Models {
         
         public void SaveToFile(string filename) {
             if(!SettlementDataDetails.Any())
-                throw new ArgumentNullException("The Settlement Details cannot be empty!");
+                throw new ArgumentNullException("The Settlement Details cannot be empty.");
 
-            using (var stream = new StreamWriter(filename))
-            {
-                stream.Write(ToJson());
-                stream.Flush();
-                stream.Close();
-            }
+            var contents = ToJson();
+            using var stream = new StreamWriter(filename);
+            stream.Write(contents);
+            stream.Flush();
+            stream.Close();
         }
 
         public string ToJson() => this.SerializeToString();

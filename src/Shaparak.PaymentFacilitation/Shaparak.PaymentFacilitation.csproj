@@ -1,96 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68468831-3B4D-4516-B57F-49D37CA81C28}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <Version>1.0.0</Version>
+    <Authors>Iman Nemati</Authors>
+    <PackageProjectUrl>https://github.com/imaun/pardakhtyari</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/imaun/pardakhtyari</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>shaparak, payment-facilitation, پرداخت_یاری, شاپرک</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>GPL</PackageLicenseExpression>
     <RootNamespace>Shaparak.PaymentFacilitation</RootNamespace>
-    <AssemblyName>Shaparak.PaymentFacilitation</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <PackageId>Shaparak.PaymentFacilitation</PackageId>
+    <Product>Shaparak.PaymentFacilitation</Product>
+    <Description>Provider Shaparak services to implement Payment Facilitation (پرداخت‌یاری) in .NET applications.</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Enums\ShaparakAcceptorType.cs" />
-    <Compile Include="Enums\ShaparakBusinessOwnershipType.cs" />
-    <Compile Include="Enums\ShaparakBusinessRelationshipType.cs" />
-    <Compile Include="Enums\ShaparakEtrustCertificateType.cs" />
-    <Compile Include="Enums\ShaparakGender.cs" />
-    <Compile Include="Enums\ShaparakIdCertificateLetter.cs" />
-    <Compile Include="Enums\ShaparakMerchantIdentityType.cs" />
-    <Compile Include="Enums\ShaparakRequestStatus.cs" />
-    <Compile Include="Enums\ShaparakRequestType.cs" />
-    <Compile Include="Enums\ShaparakResidencyType.cs" />
-    <Compile Include="Enums\ShaparakScatteredSettlementType.cs" />
-    <Compile Include="Enums\ShaparakShopType.cs" />
-    <Compile Include="Enums\ShaparakTerminalRemovedReason.cs" />
-    <Compile Include="Enums\ShaparakTerminalStatus.cs" />
-    <Compile Include="Enums\ShaparakTerminalType.cs" />
-    <Compile Include="Enums\ShaparakUpdateAction.cs" />
-    <Compile Include="Enums\ShaparakVitalStatus.cs" />
-    <Compile Include="Infrastructure\Extensions.cs" />
-    <Compile Include="Infrastructure\HttpRestClient.cs" />
-    <Compile Include="Infrastructure\IHttpRestClient.cs" />
-    <Compile Include="Infrastructure\PemUtil.cs" />
-    <Compile Include="Infrastructure\ShaparakCodeExceptions.cs" />
-    <Compile Include="Infrastructure\TimeStampHelper.cs" />
-    <Compile Include="Models\ReadRequestCartableResponse.cs" />
-    <Compile Include="Models\ShaparakAcceptor.cs" />
-    <Compile Include="Models\ShaparakContractInfo.cs" />
-    <Compile Include="Models\ShaparakCustomerIbanInfo.cs" />
-    <Compile Include="Models\ShaparakErrorObject.cs" />
-    <Compile Include="Models\ShaparakMerchant.cs" />
-    <Compile Include="Models\ShaparakMerchantIbanInfo.cs" />
-    <Compile Include="Models\ShaparakMerchantOfficer.cs" />
-    <Compile Include="Models\ShaparakReadRequest.cs" />
-    <Compile Include="Models\ShaparakRelatedMerchant.cs" />
-    <Compile Include="Models\ShaparakSettlementData.cs" />
-    <Compile Include="Models\ShaparakSettlementFile.cs" />
-    <Compile Include="Models\ShaparakShop.cs" />
-    <Compile Include="Models\ShaparakShopAndAcceptor.cs" />
-    <Compile Include="Models\ShaparakTerminal.cs" />
-    <Compile Include="Models\ShaparakWriteRequest.cs" />
-    <Compile Include="Models\ShaparakWriteResponse.cs" />
-    <Compile Include="ShaparakClient.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

@@ -1,7 +1,6 @@
 ﻿using System;
-using Shaparak.PaymentFacilitation.Core;
-using Shaparak.PaymentFacilitation.Core.Models;
-using Shaparak.PaymentFacilitation.Core.Infrastructure;
+using Shaparak.PaymentFacilitation;
+using Shaparak.PaymentFacilitation.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection {
 
