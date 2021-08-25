@@ -19,6 +19,10 @@ namespace Shaparak.PaymentFacilitation.Infrastructure {
             _httpClient = _httpClientFactory.CreateClient();
         }
 
+        public HttpRestClient(HttpClient httpClient) {
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
+
         private void addHeaders(Dictionary<string, string> headers = null) {
             _httpClient.DefaultRequestHeaders.Clear();
             foreach (var item in headers ?? new Dictionary<string, string>())

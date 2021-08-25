@@ -73,7 +73,7 @@ namespace Shaparak.PaymentFacilitation  {
         #endregion
 
         /// <inheritdoc/>
-        public async Task<ReadRequestCartableResponse> ReadRequestCartable(ShaparakReadRequest model) {
+        public async Task<ReadRequestCartableResponse> ReadRequestCartableAsync(ShaparakReadRequest model) {
             if (model == null)
                 throw new NullReferenceException("The model cannot be null.");
 
@@ -88,7 +88,7 @@ namespace Shaparak.PaymentFacilitation  {
         }
 
         /// <inheritdoc/>
-        public async Task<ShaparakWriteResponse> WriteExternalRequest(ShaparakWriteRequest model) {
+        public async Task<ShaparakWriteResponse> WriteExternalRequestAsync(ShaparakWriteRequest model) {
             if (model == null)
                 throw new NullReferenceException("The model cannot be null.");
 

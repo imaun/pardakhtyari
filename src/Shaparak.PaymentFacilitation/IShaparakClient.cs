@@ -33,7 +33,7 @@ namespace Shaparak.PaymentFacilitation {
         /// </summary>
         /// <param name="model">مدل جستجوی درخواست ها</param>
         /// <returns></returns>
-        Task<ReadRequestCartableResponse> ReadRequestCartable(ShaparakReadRequest model);
+        Task<ReadRequestCartableResponse> ReadRequestCartableAsync(ShaparakReadRequest model);
 
         /// <summary>
         /// این متد برای ارسال درخواست های مختلف به سیستم شاپرک است.
@@ -43,7 +43,7 @@ namespace Shaparak.PaymentFacilitation {
         /// </summary>
         /// <param name="model">مدل ورودی درخواست</param>
         /// <returns></returns>
-        Task<ShaparakWriteResponse> WriteExternalRequest(ShaparakWriteRequest model);
+        Task<ShaparakWriteResponse> WriteExternalRequestAsync(ShaparakWriteRequest model);
 
     }
 }

@@ -1,0 +1,1114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shaparak.PaymentFacilitation</name>
+    </assembly>
+    <members>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakBusinessOwnershipType">
+            <summary>
+            نوع مالکیت کسب و کار
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakBusinessRelationshipType">
+            <summary>
+            نوع ارتباط تجاری دو متقاضی
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakEtrustCertificateType">
+            <summary>
+            نوع نماد الکترونیکی
+            بر اساس تعاریف سازمان توسعه تجارت
+            یک ستاره = 0
+            دو ستاره = 1
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakGender">
+            <summary>
+            نوع جنسیت در سیستم شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakIdCertificateLetter">
+            <summary>
+            مجموعه سری حرفی شناسنامه
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakMerchantIdentityType">
+            <summary>
+            نوع پذیرنده در سیستم شاپرک
+            حقیقی = 0
+            حقوقی = 1
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakRequestStatus">
+            <summary>
+            انواع وضعیت های درخواست در سیستم شاپرک
+            </summary>
+        </member>
+        <member name="F:Shaparak.PaymentFacilitation.Enums.ShaparakRequestStatus.DelayInProcessing">
+            <summary>
+            در مواردی قبیل در دسترس نبودن سرویس های استعلام هویتی و آدرس پستی و ...
+            پردازش رکوردها تا زمان رفع مشکل به تاخیر خواهد افتاد
+            </summary>
+        </member>
+        <member name="F:Shaparak.PaymentFacilitation.Enums.ShaparakRequestType.RegisterCustomerOrShop">
+            <summary>
+            برای اطمینان از صحت اطلاعات استعلامی هویتی و فروشگاهی و همچنین نبودن
+            در لیست سیاه مشتریان، جهت ادامه فرآیند تخصیص پذیرندگی
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakResidencyType">
+            <summary>
+            نوع ملیت
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakScatteredSettlementType">
+            <summary>
+            انواع امکان تقسیم وجوه
+            جدول 29-5-5 ص73 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakShopType">
+            <summary>
+            نوع فروشگاه در سیستم شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakTerminalRemovedReason">
+            <summary>
+            علل جمع آوری  پایانه
+            جدول (5-5-9) مستند شاپرک ص52
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakTerminalStatus">
+            <summary>
+            وضعیت ترمینال پذیرندگی
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakTerminalType">
+            <summary>
+            انواع ترمینال
+            طبق جدول (5-9) مستند شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Enums.ShaparakUpdateAction">
+            <summary>
+            انواع اصلاح در متدها
+            </summary>
+        </member>
+        <member name="F:Shaparak.PaymentFacilitation.Enums.ShaparakUpdateAction.Remove">
+            <summary>
+            این مورد در حال حاضر استفاده نشده و کاربرد آتی دارد.
+            </summary>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.Infrastructure.TimeStampHelper.ToTimestamp(System.DateTime)">
+            <summary>
+            Convert a <see cref="T:System.DateTime"/> value to correspondig Unix Timestamp.
+            Note that you must send DateTime value in UTC for this method to work correctly.
+            </summary>
+            <param name="value">DateTime value to convert to Timestamp.</param>
+            <returns>Unix Timestamp for the given <see cref="T:System.DateTime"/> value.</returns>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.Infrastructure.TimeStampHelper.ToTimestamp3(System.DateTime)">
+            <summary>
+            Convert a <see cref="T:System.DateTime"/> value to correspondig Unix Timestamp3.
+            Note that you must send DateTime value in UTC for this method to work correctly.
+            </summary>
+            <param name="value">DateTime value to convert to Timestamp3.</param>
+            <returns>Unix Timestamp3 for the given <see cref="T:System.DateTime"/> value.</returns>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.IShaparakClient">
+            <summary>
+            کلاینت ارتباط با وب سرویس شاپرک
+            دو متد کلی شاپرک را در اختیار می گذارد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.IShaparakClient.BaseUrl">
+            <summary>
+            Shaparak API BaseUrl.
+            For production use the url must be : https://mms.shaparak.ir/merchant
+            but make sure by reading the Shaparak docs.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.IShaparakClient.Username">
+            <summary>
+            Shaparak Username
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.IShaparakClient.Password">
+            <summary>
+            Shaparak Password
+            </summary>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.IShaparakClient.ReadRequestCartableAsync(Shaparak.PaymentFacilitation.Models.ShaparakReadRequest)">
+            <summary>
+            این متد برای جستجوی درخواست های ثبت شده شما می باشد.
+            لطفاً برای راهنمایی بیشتر، به آدرس 
+            https://virgool.io/@imun/pardakhtyari-nnnvvxpnyyay
+            بروید
+            </summary>
+            <param name="model">مدل جستجوی درخواست ها</param>
+            <returns></returns>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.IShaparakClient.WriteExternalRequestAsync(Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest)">
+            <summary>
+            این متد برای ارسال درخواست های مختلف به سیستم شاپرک است.
+            لطفاً برای اطلاعات بیشتر به گیت‌هاب پروژه یا مقاله من در ویرگول :
+            https://virgool.io/@imun/pardakhtyari-nnnvvxpnyyay
+            مراجعه کنید.
+            </summary>
+            <param name="model">مدل ورودی درخواست</param>
+            <returns></returns>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse">
+            <summary>
+            مدل نتیجه جستجو برای درخواست های ثبت شده در سامانه جامع پذیرندگان شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.TrackingNumber">
+            <summary>
+            شماره پیگیری
+            به عنوان شناسه پرداخت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.PspTrackingNumber">
+            <summary>
+            شماره پیگیری شرکت پرداخت
+            برای درخواست های ثبت شده توسط شرکت پرداخت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.Status">
+            <summary>
+            وضعیت درخواست
+            جدول 6-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.Description">
+            <summary>
+            توضیحات از طرف ثبت کننده درخواست
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.RequestType">
+            <summary>
+            نوع درخواست
+            جدول 7-5
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.Merchant">
+            <summary>
+            اطلاعات متقاضی 
+            جدول 8-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.RelatedMerchants">
+            <summary>
+            اطلاعات شرکای متقاضی
+            جدول 24-5 و 6-5
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.RejectionReasons">
+            <summary>
+            دلایل رد/عدم پذیرش درخواست
+            جدول 23-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ReadRequestCartableResponse.Details">
+            <summary>
+            این فیلد جهت کاربردهای آتی در نظر گرفته شده
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor">
+            <summary>
+            اقلام اطلاعاتی پذیرندگی
+            (جدول 5-5-28)
+            مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.FacilitatorAcceptorCode">
+            <summary>
+            این کد از شرکت Psp برای ما ارسال می‌شود و در درخواست های مربوط به همان Psp همیشه یک عدد 15رقمی یکسان است.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.Blockable">
+            <summary>
+            امکان مسدود کردن حساب به میزان مبلغ تراکنش
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.SettledSeparately">
+            <summary>
+            امکان واریز تفکیکی وجوه
+            استفاده آتی
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.AllowScatteredSettlement">
+            <summary>
+            امکان تقسیم وجوه
+            (استفاده آتی)
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.AcceptCreditCardTransaction">
+            <summary>
+            (استفاده آتی)
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.AllowOtherInternationalCardsTrx">
+            <summary>
+            اشتباه تایپی در دیتا ممبر در مستند شاپرک بوده!!
+            L انتهای کلمه International در نام فیلد در مستند هست
+            امیدوارم که اررور نده
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.AllowJcbCardTrx">
+            <summary>
+            این مورد در مستندات شاپرک ذکر نشده!
+            موقع ثبت اولین پذیرنده در محیط عملیاتی با خطای عدم وجود این فیلد در درخواست مواجه شدم که خودم اضافه کردم و خطا برطرف شد.
+            [imun]
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.Terminals">
+            <summary>
+            پایانه های مربوط به پذیرندگی
+            (جدول 5-12) مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.ShaparakSettlementIbans">
+            <summary>
+            شباهای متصل به پذیرندگی جهت فرآیند تسویه داخلی شاپرک
+            * این نوع شبا صرفا برای پذیرندگان "پشتیبانی شده" و در درخواست‌های "تعریف ترمینال" و "تغییر شبا" اجباری است
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakAcceptor.UpdateAction">
+            <summary>
+            هنگام ثبت درخواست اصلاح اطلاعات این فیلد با مقدار لازم پر می شود
+            در غیر این صورت null.
+            ص69 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo">
+            <summary>
+            هرگونه مستندی که براساس آن تغییری در وضعیت پذیرندگی مشتری رخ دهد
+            (مانند و نه محدود به قرارداد تعریف شبای عمومی، قرارداد تعریف پذیرندگی، الحاقیه تغییر شبا، خاتمه قرارداد و ....)
+            در سامانه جامع به عنوان قرارداد محسوب شده و ارائه اطلاعات آن در قالب کلاس زیر به شاپرک الزامی است.
+            ص55 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ContractDate">
+            <summary>
+            تاریخ عقد قرارداد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ContractDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ContractDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ExpiryDate">
+            <summary>
+            تاریخ اتمام قرارداد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ExpiryDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ExpiryDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ServiceStartDate">
+            <summary>
+            تاریخ فعال سازی سرویس بر اساس قرارداد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ServiceStartDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ServiceStartDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.ContractNumber">
+            <summary>
+            شماره قرارداد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakContractInfo.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakCustomerIbanInfo">
+            <summary>
+            اطلاعات شبای مشتری
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakErrorObject">
+            <summary>
+            جدول 18-5-5 مستند شاپرک
+            نوع خطا
+            لیست کامل کدهای خطای سامانه جهت اطلاع شرکت های پرداخت یار و اعمال ی پیاده سازی در قالب مستندی مستقل به
+            شرکت ها ارائه می گردد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakErrorObject.CodeExceptionValue">
+            <summary>
+            Error! Reference source not found.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakErrorObject.CodeException">
+            <summary>
+            جدول 32-5 مستند وب سرویس شاپرک.
+            معنی شماره خطا.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakErrorObject.FieldName">
+            <summary>
+            این بخش صرفاً در مواردی که خطا مربوط به فیلد خاصی باشد پر می شود
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakMerchant">
+            <summary>
+            اقلام اطلاعاتی متقاضی
+            مقادیر پنج فیلد نوع متقاضی، ملیت متقاضی، کد ملی، شناسه ملی اشخاص حقوقی، شناسه فراگیر اتباع خارجی برای این جدول
+            به عنوان کلید تلقی می گردد.
+            بسته به مقادیر دو فیلد نوع متقاضی و ملیت متقاضی، فاط یکی از سه فیلد کد ملی، شناسه ملی اشخاص حقوقی و شناسه فراگیر
+            اتباع خارجی، برای هر متقاضی،مقدار می گیرند و مقدار دو فیلد دیگر null می باشد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.FirstNameFa">
+            <summary>
+            این مورد برای متقاضیان غیر ایرانی اجباری است
+            برای متقاضیان حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.LastNameFa">
+            <summary>
+            این مورد برای متقاضیان غیر ایرانی اجباری است
+            برای متقاضیان حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.FatherNameFa">
+            <summary>
+            برای متقاضیان حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.FirstNameEn">
+            <summary>
+            نام به انگلیسی
+            برای متقاضیان حقیقی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.LastNameEn">
+            <summary>
+            نام خانوادگی به انگلیسی
+            برای متقاضیان حقیقی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.FatherNameEn">
+            <summary>
+             برای متقاضیان حقیقی ایرانی اجباری است
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.Gender">
+            <summary>
+            طبق جدول 5-28 مستند
+            برای متقاضیان غیرایرانی اجباری
+            برای متقاضیان حقیقی ایرانی، طبق داده های برگشتی از استعلام ثبت احول تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthDate">
+            <summary>
+            *Read Only : this will read the value of <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthDateValue"/> and
+            convert it to Timestamp*
+            برای متقاضی حقیقی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthDateValue">
+            <summary>
+            Backing field for <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.RegisterDate">
+            <summary>
+            *Read Only : this will read the value of <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.RegisterDateValue"/> and
+            convert it to Timestamp*
+            برای متقاضی حقوقی اجباری
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.RegisterDateValue">
+            <summary>
+            Backing field for <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.RegisterDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.NationalCode">
+            <summary>
+            برای متقاضی حقیقی ایرانی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.CompanyNameFa">
+            <summary>
+            برای متقاضی حقوقی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.CompanyNameEn">
+            <summary>
+            برای متقاضی حقوقی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.MerchantType">
+             <summary>
+            نوع متقاضی : حقیقی یا حقوقی
+            طبق جدول 5-18 مستند شاپرک
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.ResidencyType">
+            <summary>
+            ایرانی یا غیرایرانی
+            طبق جدول 5-19 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.VitalStatus">
+            <summary>
+            زنده یا مرده!!
+            طبق جدول 5-20 مستند شاپرک
+            برای متقاضیان حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthCertificateNumber">
+            <summary>
+            برای متقاضیان حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthCertificateSerial">
+            <summary>
+            برای متقاضیان حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthCertificateSeriesLetter">
+            <summary>
+            طبق جدول 5-29 مستند شاپرک
+            برای متقاضیان حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.BirthCertificateSeriesNumber">
+             <summary>
+            برای متقاضیان حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود  
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.NationalLegalCode">
+            <summary>
+            برای متقاضی حقوقی اجباری
+            اعتبارسنجی آن در سامانه جامع کنترل می شود
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.CountryCode">
+            <summary>
+            برای متقاضیان غیرایرانی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.ForeignPervasiveCode">
+            <summary>
+            برای متقاضیان غیر ایرانی اجباری
+            اعتبارسنجی در سامانه جامع کنترل می شود
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.PassportNumber">
+            <summary>
+            این مورد برای متقاضیان غیرایرانی اجباری
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.PassportExpireDate">
+            <summary>
+            برای متقاضیان غیرایرانی اجباری
+            در سایر موارد null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.PassportExpireDateValue">
+            <summary>
+            Backing field for <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.PassportExpireDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.Ibans">
+            <summary>
+            جدول 11-5 مستند شاپرک
+            بر اساس قانون شاپرک
+            هر شبای تعریف شده در سیستم الزاما متعلق به یک و فقط یک مشتری می باشد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.Officers">
+            <summary>
+            برای متقاضیان حقوقی اجباری
+            سایر موارد null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchant.UpdateAction">
+            <summary>
+            هنگام ثبت درخواست اصلاح اطلاعات این فیلد با مقدار لازم پر می شود
+            در غیر این صورت null.
+            ص69 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakMerchantIbanInfo">
+            <summary>
+            هر شماره شبا در شبکه پرداخت کارت می تواند به یک و فقط یک متقاضی تعلق داشته باشد. با این حال، شبای تعریف شده
+            برای یک متقاضی، می تواند تحت رابطه شراکت در پذیرندگی متقاضی دیگری جهت تسهیم وجوه مورد استفاده قرار گیرد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantIbanInfo.Iban">
+            <summary>
+            *شماره شبا در این جدول به عنوان کلید تلقی می گردد.
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer">
+            <summary>
+            اطلاعات صاحبان امضاء برای سازمان ها
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.FirstNameFa">
+            <summary>
+            این مورد برای صاحبان امضاء غیر ایرانی اجباری است
+            برای صاحبان امضاء حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.LastNameFa">
+            <summary>
+            این مورد برای صاحبان امضاء غیر ایرانی اجباری است
+            برای صاحبان امضاء حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.FatherNameFa">
+            <summary>
+            برای صاحبان امضاء حقیقی ایرانی با توجه به  داده های برگشتی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.FirstNameEn">
+            <summary>
+            نام به انگلیسی
+            برای صاحبان امضاء حقیقی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.LastNameEn">
+            <summary>
+            نام خانوادگی به انگلیسی
+            برای صاحبان امضاء حقیقی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.FatherNameEn">
+            <summary>
+             برای صاحبان امضاء حقیقی ایرانی اجباری است
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.Gender">
+            <summary>
+            طبق جدول 5-28 مستند
+            برای صاحبان امضاء غیرایرانی اجباری
+            برای صاحبان امضاء حقیقی ایرانی، طبق داده های برگشتی از استعلام ثبت احول تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthDate">
+            <summary>
+            برای متقاضی حقیقی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.NationalCode">
+            <summary>
+            برای متقاضی حقیقی ایرانی اجباری
+            سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.ResidencyType">
+            <summary>
+            ایرانی یا غیرایرانی
+            طبق جدول 5-19 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.VitalStatus">
+            <summary>
+            زنده یا مرده!!
+            طبق جدول 5-20 مستند شاپرک
+            برای صاحبان امضاء حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthCertificateNumber">
+            <summary>
+            برای صاحبان امضاء حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthCertificateSerial">
+            <summary>
+            برای صاحبان امضاء حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthCertificateSeriesLetter">
+            <summary>
+            طبق جدول 5-29 مستند شاپرک
+            برای صاحبان امضاء حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.BirthCertificateSeriesNumber">
+             <summary>
+            برای صاحبان امضاء حقیقی ایرانی از استعلام اداره ثبت احوال تکمیل می شود  
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.CountryCode">
+            <summary>
+            برای صاحبان امضاء غیرایرانی اجباری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.ForeignPervasiveCode">
+            <summary>
+            برای صاحبان امضاء غیر ایرانی اجباری
+            اعتبارسنجی در سامانه جامع کنترل می شود
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.PassportNumber">
+            <summary>
+            این مورد برای صاحبان امضاء غیرایرانی اجباری
+            در سایر موارد مقدار null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.PassportExpireDate">
+            <summary>
+            برای صاحبان امضاء غیرایرانی اجباری
+            در سایر موارد null
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.PassportExpireDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.PassportExpireDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakMerchantOfficer.UpdateAction">
+            <summary>
+            هنگام ثبت درخواست اصلاح اطلاعات این فیلد با مقدار لازم پر می شود
+            در غیر این صورت null.
+            ص69 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest">
+            <summary>
+            قالب تقاضای دریافت درخواست های مرتبط با سامانه.
+            حداقل یکی از سه فیلد requestDate, trackingNumbers, trackingNumbersPsps باید دارای مقدار باشد.
+            حداکثر بازه زمانی مورد قبول یک روز.
+            حداکثر امکان جستجو بر اساس 100 شماره پیگیری یا 100 شماره پیگیری پرداخت یار.
+            در صورت عدم رعایت شرایط فوق هیچ داده ای بازگردانده نمی‌شود.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestStartDateValue">
+            <summary>
+            برای تعیین شروع بازه درخواست  این فیلد را مقداردهی کنید.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestFinishDateValue">
+            <summary>
+            برای تعیین تاریخ پایان بازه درخواست این فیلد را مقداردهی کنید.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestDate">
+            <summary>
+            آرایه ای دو عضوی از نوع Timestamp
+            که عضو اول تاریخ ابتدای بازه و  عضو دوم تاریخ انتهای بازه را نشان می‌دهد.
+            (توجه کنید که مقادیر شروع و پایان از فیلد های <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestStartDateValue"/> و <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestFinishDateValue"/>
+            خوانده می‌شود)
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.RequestTypes">
+            <summary>
+            آرایه ای از نوع درخواست
+            جدول 7-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.Statuses">
+            <summary>
+            آرایه ای از وضعیت درخواست ها
+            جدول 5-7 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.TrackingNumbers">
+            <summary>
+            آرایه ای از شماره پیگیری درخواست های ثبت شده
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakReadRequest.PspTrackingNumbers">
+            <summary>
+            آرایه ای از شماره پیگیری درخواست های ثبت شده شرکت پرداخت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakRelatedMerchant.RelationType">
+            <summary>
+            نوع رابطه مشتریان
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData">
+            <summary>
+            فیلدهای فایل تسویه با پذیرندگان
+            طبق جدول فرمت فایل تسویه
+            ص6 مستند "الزامات فنی فعالیت پرداخت یاران در شبکه پرداخت الکترونیکی کشور (فایل تسویه"
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.AcceptorCode">
+            <summary>
+            کد 15رقمی پذیرنده
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.Iin">
+            <summary>
+            کد سوئیچ شرکت ارائه دهنده خدمات پرداخت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.PaymentFacilitatorIban">
+            <summary>
+            شماره شبای پرداخت یار
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.SettlementAmount">
+            <summary>
+            مبلغ تسویه
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.WageAmount">
+            <summary>
+            مبلغ کارمزد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakSettlementData.SettlementIban">
+            <summary>
+            شماره شبای تسویه
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakShop">
+            <summary>
+            توضیح مهم :
+            سه قلم اطلاعاتی مشتری، کدپستی و صنف در موجودیت فروشگاه به عنوان کلید می باشند
+            تعلق آدرس وب سایت اعلامی به فروشگاه در اطلاعات ارسالی بر عهده شرکت پرداخت می باشد
+            این موضوع در ممیزی های شرکت شاپرک نیز لحاظ می شود
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.CertificateIssueDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.CertificateIssueDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.CertificateExpiryDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.CertificateExpiryDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.BusinessCategoryCode">
+            <summary>
+            رجوع به مستند دستورالعمل جامع تخصیص کد صنف
+            به پذیرندگان شبکه الکترونیکی پرداخت کارت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.RentalContractNumber">
+            <summary>
+            برای فروشگاه هایی که نوع مالکیت استیجاری دارند
+            این مورد اجباری است و در سایر موارد مقدار نال می گیرد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.RentalExpiryDate">
+            <summary>
+            برای فروشگاه هایی که نوع مالکیت استیجاری دارند
+            این مورد اجباری است و در سایر موارد مقدار نال می گیرد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.RentalExpiryDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.RentalExpiryDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.Address">
+            <summary>
+            بر اساس کدپستی، استعلام آدرس از اداره پست
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.ProvinceCode">
+            <summary>
+            بر اساس کد پستی
+            استعلام کد استان از اداره پست
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateType">
+            <summary>
+            بر اساس آدرس وب سایت
+            استعلام نوع نماد اعتماد الکترونیکی از مرکز توسعه تجارت الکترونیکی
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateIssueDate">
+            <summary>
+            بر اساس آدرس وب سایت
+            استعلام نوع نماد اعتماد الکترونیکی از مرکز توسعه تجارت الکترونیکی
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateIssueDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateExpiryDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateExpiryDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EtrustCertificateExpiryDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.EmailAddress">
+            <summary>
+            برای فروشگاه های مجازی اجباری
+            و در غیر این صورت اختیاری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.WebsiteAddress">
+            <summary>
+            برای فروشگاه های مجازی اجباری
+            و در غیر این صورت اختیاری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShop.UpdateAction">
+            <summary>
+            هنگام ثبت درخواست اصلاح اطلاعات این فیلد با مقدار لازم پر می شود
+            در غیر این صورت null.
+            ص69 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakShopAndAcceptor">
+             <summary>
+             مستند شاپرک
+            ص 62
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakShopAndAcceptor.Acceptors">
+            <summary>
+            این مورد برای درخواست های ترمینال جدید، تغییر شبا، جمع آوری ترمینال،
+            تغییر آدرس فروشگاه پذیرندگی، فعال سازی مجدد ترمینال، تکمیل اطلاعات از طرف 
+            شرکت ارائه دهنده خدمات پرداخت اجباری است
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakTerminal">
+            <summary>
+            اقلام اطلاعاتی ترمینال پذیرنده در سیستم شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.TerminalType">
+            <summary>
+            طبق جدول 9-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.SetupDateValue">
+            <summary>
+            Backing field for : <see cref="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.SetupDate"/>
+            ----Important : Provide UTC DateTime for this field
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.AccessAddress">
+            <summary>
+            این فیلد برای درگاه اینترنتی اجباری است و
+            در سایر موارد مقدار نال دارد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.AccessPort">
+            <summary>
+            این فیلد برای درگاه اینترنتی اجباری و 
+            در سایر موارد مقدار نال می گیرد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.CallbackAddress">
+            <summary>
+            این فیلد برای وب سایت احباری است و 
+            در سایر موارد مقدار نال می گیرد.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakTerminal.UpdateAction">
+            <summary>
+            هنگام ثبت درخواست اصلاح اطلاعات این فیلد با مقدار لازم پر می شود
+            در غیر این صورت null.
+            ص69 مستند وب سرویس شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest">
+            <summary>
+            مدل ثبت درخواست توسط پرداخت یار در وب سرویس شاپرک.
+            ص14 مستند وب سرویس شاپرک.
+            انواع درخواست های تعریف پذیرنده، ترمینال، تغییر آدرس، تعریف مشتری و ...
+            طبق انواع درخواست <see cref="T:Shaparak.PaymentFacilitation.Enums.ShaparakRequestType"/>
+            برای راهنمایی بیشتر در خصوص انواع درخواست ها به پیوست 1 مستند 
+            پروتکل وب سرویس‌های ثبت و پیگیری درخواست‌های متقضایان در سامانه جامع پذیرندگان توسط شرکت‌های پرداخت‌یار مراجعه کنید
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.PspTrackingNumber">
+            <summary>
+            شماره پیگیری شرکت پرداخت
+            برای درخواست های ثبت شده توسط شرکت پرداخت
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.RequestType">
+            <summary>
+            نوع درخواست
+            جدول 7-5
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.Merchant">
+            <summary>
+            اطلاعات متقاضی 
+            جدول 8-5 مستند شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.RelatedMerchants">
+             <summary>
+             اطلاعات شرکای متقاضی
+             جدول 24-5 و 6-5
+            در صورت نیاز به تخصیص شبایی به پذیرنده که متعلق به شخص دیگری می باشد
+            این شخص به عنوان مشتری در سیستم ثبت شده و اطلاعات وی در این بخش ارسال می شود
+             تمامی شرکای متقاضی نیز حتی در صورت نداشتن ابزار پرداخت، به طور خودکار در سامانه به صورت مشتری تعریف می شوند
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.Contract">
+            <summary>
+            اطلاعات قرارداد
+            در درخواست های اعمال محدودیت، تکمیل اطلاعات و ثبت کاربر، در سایر درخواست هایی که شرکت
+            ارائه دهنده خدمات پرداخت ثبت می کند اجباری است
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.ShopAcceptors">
+            <summary>
+            اطلاعات فروشگاه های متقاضی جدول 26-5 مستند وب سرویس شاپرک.
+            فقط اطلاعات فروشگاه هایی که طی این درخواست متاثر می‌شوند آورده می شوند.
+            برای درخواست های تعریف/تغییر/حذف شبای عمومی، اعمال محدودیت و تعریف کاربر،
+            الزاماً این مورد نال فرستاده شود.
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest.Description">
+            <summary>
+            مقادیر سایر فیلدهای این مستند نباید در این
+            فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
+            فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.Models.ShaparakWriteResponse">
+            <summary>
+            مدل پاسخ متد WriteExternalRequest
+            وب سرویس جامع
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.Models.ShaparakWriteResponse.RejectionReason">
+            <summary>
+            طبق جدول (23-5) مستند شاپرک
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.ShaparakOptions">
+            <summary>
+            تنظیمات اتصال به سرویس پرداخت‌یاری شاپرک
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakOptions.Username">
+            <summary>
+            نام کاربری بدون رمزنگاری
+            </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakOptions.Password">
+             <summary>
+            کلمه عبور بدون رمزنگاری
+             </summary>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakOptions.BaseUrl">
+            <summary>
+            Shaparak API BaseUrl. For production use : https://mms.shaparak.ir/merchant
+            </summary>
+        </member>
+        <member name="T:Shaparak.PaymentFacilitation.ShaparakClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.ShaparakClient.#ctor(Shaparak.PaymentFacilitation.Infrastructure.IHttpRestClient,System.String,System.String,System.String)">
+            <summary>
+            Pass <see cref="P:Shaparak.PaymentFacilitation.ShaparakClient.Username"/> and <see cref="P:Shaparak.PaymentFacilitation.ShaparakClient.Password"/> in plain text.
+            This class will convert it to Base64 in order to build Basic Authorization header
+            for Shaparak WebService.
+            </summary>
+            <param name="username">Shaparak Username</param>
+            <param name="password">Shaparak Password</param>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakClient.BaseUrl">
+            <inheritdoc/>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakClient.Username">
+            <inheritdoc/>
+        </member>
+        <member name="P:Shaparak.PaymentFacilitation.ShaparakClient.Password">
+            <inheritdoc/>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.ShaparakClient.ReadRequestCartableAsync(Shaparak.PaymentFacilitation.Models.ShaparakReadRequest)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Shaparak.PaymentFacilitation.ShaparakClient.WriteExternalRequestAsync(Shaparak.PaymentFacilitation.Models.ShaparakWriteRequest)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ShaparakBuilderExtension.AddPaymentFacilitation(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Shaparak.PaymentFacilitation.ShaparakOptions})">
+            <summary>
+            Adds Payment Facilitaion or (Pardakhtyari پرداخت‌یاری) services to your Application.
+            for more informations about how to work with ShaparakClient pls visit :
+            https://virgool.io/@imun/pardakhtyari-nnnvvxpnyyay
+            or contact me at : hi@imaun.ir
+            </summary>
+            <param name="services">Service collection</param>
+            <param name="configure">Options</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

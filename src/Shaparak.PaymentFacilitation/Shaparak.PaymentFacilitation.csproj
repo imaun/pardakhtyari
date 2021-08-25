@@ -14,7 +14,12 @@
     <RootNamespace>Shaparak.PaymentFacilitation</RootNamespace>
     <PackageId>Shaparak.PaymentFacilitation</PackageId>
     <Product>Shaparak.PaymentFacilitation</Product>
-    <Description>Provider Shaparak services to implement Payment Facilitation (پرداخت‌یاری) in .NET applications.</Description>
+    <Description>Provides Shaparak services to implement Payment Facilitation (پرداخت‌یاری) in .NET applications.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\Projects\Open-Source\pardakhtyari\src\Shaparak.PaymentFacilitation\Shaparak.PaymentFacilitation.xml</DocumentationFile>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
