@@ -72,6 +72,7 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonProperty("gender")]
         public ShaparakGender? Gender { get; set; }
 
+        private long? birthDate;
         /// <summary>
         /// *Read Only : this will read the value of <see cref="BirthDateValue"/> and
         /// convert it to Timestamp*
@@ -80,7 +81,15 @@ namespace Shaparak.PaymentFacilitation.Models {
         /// </summary>
         [Description("تاریخ تولد")]
         [JsonProperty("birthDate")]
-        public long? BirthDate => BirthDateValue?.ToTimestamp3();
+        public long? BirthDate {
+            get {
+                if (birthDate.HasValue)
+                    return birthDate;
+
+                return BirthDateValue?.ToTimestamp3();
+            }
+            set => birthDate = value;
+        }
 
         /// <summary>
         /// Backing field for <see cref="BirthDate"/>
@@ -89,6 +98,7 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonIgnore]
         public DateTime? BirthDateValue { get; set; }
 
+        private long? registerDate;
         /// <summary>
         /// *Read Only : this will read the value of <see cref="RegisterDateValue"/> and
         /// convert it to Timestamp*
@@ -97,7 +107,14 @@ namespace Shaparak.PaymentFacilitation.Models {
         /// </summary>
         [Description("تاریخ ثبت متقاضی حقوقی")]
         [JsonProperty("registerDate")]
-        public long? RegisterDate => RegisterDateValue?.ToTimestamp3();
+        public long? RegisterDate {
+            get {
+                if (registerDate.HasValue)
+                    return registerDate;
+
+                return RegisterDateValue?.ToTimestamp3();
+            }
+        }
 
         /// <summary>
         /// Backing field for <see cref="RegisterDate"/>
@@ -225,13 +242,21 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonProperty("passportNumber")]
         public string PassportNumber { get; set; }
 
+        private long? passportExpireDate;
         /// <summary>
         /// برای متقاضیان غیرایرانی اجباری
         /// در سایر موارد null
         /// </summary>
         [Description("تاریخ اتمام اعتبار گذرنامه")]
         [JsonProperty("passportExpireDate")]
-        public long? PassportExpireDate => PassportExpireDateValue?.ToTimestamp3();
+        public long? PassportExpireDate {
+            get {
+                if (passportExpireDate.HasValue)
+                    return passportExpireDate;
+
+                return PassportExpireDateValue?.ToTimestamp3();
+            }
+        }
         
         /// <summary>
         /// Backing field for <see cref="PassportExpireDate"/>

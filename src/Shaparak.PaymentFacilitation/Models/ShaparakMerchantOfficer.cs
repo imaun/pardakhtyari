@@ -67,13 +67,21 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonProperty("gender")]
         public ShaparakGender? Gender { get; set; }
 
+        private long? birthDate;
         /// <summary>
         /// برای متقاضی حقیقی اجباری
         /// سایر موارد مقدار null
         /// </summary>
         [Description("تاریخ تولد")]
         [JsonProperty("birthDate")]
-        public long? BirthDate => BirthDateValue?.ToTimestamp3();
+        public long? BirthDate {
+            get {
+                if (birthDate.HasValue)
+                    return birthDate;
+
+                return BirthDateValue?.ToTimestamp3();
+            }
+        }
 
         /// <summary>
         /// Backing field for : <see cref="BirthDate"/>
@@ -160,13 +168,21 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonProperty("passportNumber")]
         public string PassportNumber { get; set; }
 
+        private long? passportExpireDate;
         /// <summary>
         /// برای صاحبان امضاء غیرایرانی اجباری
         /// در سایر موارد null
         /// </summary>
         [Description("تاریخ اتمام اعتبار گذرنامه")]
         [JsonProperty("passportExpireDate")]
-        public long? PassportExpireDate => PassportExpireDateValue?.ToTimestamp3();
+        public long? PassportExpireDate {
+            get {
+                if (passportExpireDate.HasValue)
+                    return passportExpireDate;
+
+                return PassportExpireDateValue?.ToTimestamp3();
+            }
+        }
         
         /// <summary>
         /// Backing field for : <see cref="PassportExpireDate"/>

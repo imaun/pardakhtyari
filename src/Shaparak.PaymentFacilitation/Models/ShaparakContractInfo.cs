@@ -14,26 +14,42 @@ namespace Shaparak.PaymentFacilitation.Models {
     /// </summary>
     public class ShaparakContractInfo {
 
+        private long? contractDate;
         /// <summary>
         /// تاریخ عقد قرارداد
         /// </summary>
         [Required, Description("تاریخ عقد قرارداد")]
         [JsonProperty("contractDate")]
-        public long ContractDate => ContractDateValue.ToTimestamp3();
+        public long? ContractDate {
+            get {
+                if (contractDate.HasValue)
+                    return contractDate;
+
+                return ContractDateValue?.ToTimestamp3();
+            }
+        }
 
         /// <summary>
         /// Backing field for : <see cref="ContractDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
         [JsonIgnore]
-        public DateTime ContractDateValue { get; set; }
+        public DateTime? ContractDateValue { get; set; }
 
+        private long? expiryDate;
         /// <summary>
         /// تاریخ اتمام قرارداد
         /// </summary>
         [Description("تاریخ اتمام قرارداد")]
         [JsonProperty("expiryDate")]
-        public long? ExpiryDate => ExpiryDateValue?.ToTimestamp3();
+        public long? ExpiryDate {
+            get {
+                if (expiryDate.HasValue)
+                    return expiryDate;
+
+                return ExpiryDateValue?.ToTimestamp3();
+            }
+        }
 
         /// <summary>
         /// Backing field for : <see cref="ExpiryDate"/>
@@ -42,19 +58,27 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonIgnore]
         public DateTime? ExpiryDateValue { get; set; }
 
+        private long? serviceStartDate;
         /// <summary>
         /// تاریخ فعال سازی سرویس بر اساس قرارداد
         /// </summary>
         [Required, Description("تاریخ فعال سازی سرویس بر اساس قرارداد")]
         [JsonProperty("serviceStartDate")]
-        public long ServiceStartDate => ServiceStartDateValue.ToTimestamp3();
+        public long? ServiceStartDate {
+            get {
+                if (serviceStartDate.HasValue)
+                    return serviceStartDate;
+
+                return ServiceStartDateValue?.ToTimestamp3();
+            }
+        }
         
         /// <summary>
         /// Backing field for : <see cref="ServiceStartDate"/>
         /// ----Important : Provide UTC DateTime for this field
         /// </summary>
         [JsonIgnore]
-        public DateTime ServiceStartDateValue { get; set; }
+        public DateTime? ServiceStartDateValue { get; set; }
 
         /// <summary>
         /// شماره قرارداد
@@ -68,7 +92,7 @@ namespace Shaparak.PaymentFacilitation.Models {
         /// فیلد ارسال شوند.همچنین اطلاعات ارسالی در این
         /// فیلد به منزله اطلاع رسانی رسمی به شاپرک نمی باشد
         /// </summary>
-        [Description("توضیحات"), MaxLength(255)]
+        [JsonProperty("Description"), Description("توضیحات"), MaxLength(255)]
         public string Description { get; set; }
 
         public string ToJson() => this.SerializeToString();

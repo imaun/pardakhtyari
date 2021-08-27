@@ -18,6 +18,7 @@ namespace Shaparak.PaymentFacilitation.Models {
         public string Iban { get; set; }
 
         [Required, Description("عنوان شبا")]
+        [JsonProperty("Description")]
         public string Description { get; set; }
 
         public string ToJson() => this.SerializeToString();

@@ -28,5 +28,10 @@ namespace Shaparak.PaymentFacilitation.Infrastructure {
             long epoch = (value.Ticks - 621355968000000000) / 10000;
             return epoch;
         }
+
+
+        public static DateTime TimeStampToDateTime(this long timeStamp) {
+            return Epoch.AddSeconds(timeStamp).ToLocalTime();
+        }
     }
 }
