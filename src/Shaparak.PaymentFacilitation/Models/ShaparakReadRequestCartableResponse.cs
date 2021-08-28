@@ -8,7 +8,7 @@ namespace Shaparak.PaymentFacilitation.Models {
     /// <summary>
     /// مدل نتیجه جستجو برای درخواست های ثبت شده در سامانه جامع پذیرندگان شاپرک
     /// </summary>
-    public class ReadRequestCartableResponse {
+    public class ShaparakReadRequestCartableResponse {
 
         #region Sample Response
 

@@ -73,15 +73,15 @@ namespace Shaparak.PaymentFacilitation  {
         #endregion
 
         /// <inheritdoc/>
-        public async Task<ReadRequestCartableResponse> ReadRequestCartableAsync(ShaparakReadRequest model) {
+        public async Task<ShaparakReadRequestCartableResponse> ReadRequestCartableAsync(ShaparakReadRequest model) {
             if (model == null)
                 throw new NullReferenceException("The model cannot be null.");
 
             string url = $"{_baseUrl}/{URL_READ_REQUEST}";
-            ReadRequestCartableResponse result;
+            ShaparakReadRequestCartableResponse result;
 
             result = await _client
-                .PostAsync<ShaparakReadRequest, ReadRequestCartableResponse>
+                .PostAsync<ShaparakReadRequest, ShaparakReadRequestCartableResponse>
                     (model, url, getHeaders());
 
             return result;

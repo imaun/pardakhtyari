@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.ComponentModel;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Shaparak.PaymentFacilitation.Enums;
 using Shaparak.PaymentFacilitation.Infrastructure;
@@ -41,6 +42,8 @@ namespace Shaparak.PaymentFacilitation.Models {
         [JsonIgnore]
         public DateTime RequestFinishDateValue { get; set; }
 
+
+        private List<long> requestDate;
         /// <summary>
         /// آرایه ای دو عضوی از نوع Timestamp
         /// که عضو اول تاریخ ابتدای بازه و  عضو دوم تاریخ انتهای بازه را نشان می‌دهد.
@@ -49,13 +52,20 @@ namespace Shaparak.PaymentFacilitation.Models {
         /// </summary>
         [Description("بازه شروع و پایان تاریخ درخواست")]
         [JsonProperty("requestDate")]
-        public List<long> RequestDate =>
-            new List<long>
-            {
-                RequestStartDateValue.ToTimestamp3(), 
-                RequestFinishDateValue.ToTimestamp3()
-            };
+        public List<long> RequestDate { 
+            get {
+                if (requestDate != null && requestDate.Any())
+                    return requestDate;
 
+                return new List<long> {
+                        RequestStartDateValue.ToTimestamp3(),
+                        RequestFinishDateValue.ToTimestamp3()
+                };
+            }
+            set => requestDate = value;
+        }
+
+        
         /// <summary>
         /// آرایه ای از نوع درخواست
         /// جدول 7-5 مستند شاپرک
