@@ -81,6 +81,7 @@ namespace Shaparak.PaymentFacilitation.Models {
 
                 return BirthDateValue?.ToTimestamp3();
             }
+            set => birthDate = value;
         }
 
         /// <summary>
@@ -182,6 +183,7 @@ namespace Shaparak.PaymentFacilitation.Models {
 
                 return PassportExpireDateValue?.ToTimestamp3();
             }
+            set => passportExpireDate = value;
         }
         
         /// <summary>

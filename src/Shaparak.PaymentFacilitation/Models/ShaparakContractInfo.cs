@@ -27,6 +27,7 @@ namespace Shaparak.PaymentFacilitation.Models {
 
                 return ContractDateValue?.ToTimestamp3();
             }
+            set => contractDate = value;
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace Shaparak.PaymentFacilitation.Models {
 
                 return ExpiryDateValue?.ToTimestamp3();
             }
+            set => expiryDate = value;
         }
 
         /// <summary>
@@ -71,6 +73,7 @@ namespace Shaparak.PaymentFacilitation.Models {
 
                 return ServiceStartDateValue?.ToTimestamp3();
             }
+            set => serviceStartDate = value;
         }
         
         /// <summary>
